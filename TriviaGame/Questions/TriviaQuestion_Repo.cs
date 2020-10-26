@@ -42,24 +42,31 @@ namespace TriviaGame.Questions
         // Update
         public bool UpdateExistingQuestion(int id, TriviaQuestion newQuestion)
         {
-            TriviaQuestion oldQuestion = GetQuestionById(int id);
+            TriviaQuestion oldQuestion = GetQuestionById(id);
+            
             if (oldQuestion != null)
             {
 
-                oldQuestion.QuestionID = newQuestion.questionID;
-                oldQuestion.Question = newQuestion.question;
-                oldQuestion.CorrectAnswer = newQuestion.correctAnswer;
-                oldQuestion.WrongAnswer1 = newQuestion.wrongAnswer1;
-                WrongAnswer2 = wrongAnswer2;
-                WrongAnswer3 = wrongAnswer3;
-                TriviaCategory = category;
+                oldQuestion.QuestionID = newQuestion.QuestionID;
+                oldQuestion.Question = newQuestion.Question;
+                oldQuestion.CorrectAnswer = newQuestion.CorrectAnswer;
+                oldQuestion.WrongAnswer1 = newQuestion.WrongAnswer1;
+                oldQuestion.WrongAnswer2 = newQuestion.WrongAnswer2;
+                oldQuestion.WrongAnswer3 = newQuestion.WrongAnswer3;
+                oldQuestion.TriviaCategory = newQuestion.TriviaCategory;
+                return true;
             }
-
-
-
-
-
-
+            else
+            {
+                return false;
+            } 
+        }     
         // Delete
+        public bool DeleteExistingQuestion(TriviaQuestion existingQuestion)
+        {
+            bool deleteQuestion = _questions.Remove(existingQuestion);
+            return deleteQuestion;
+        }
+
     }
 }
