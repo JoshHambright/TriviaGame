@@ -25,6 +25,7 @@ namespace TriviaGame.Questions
         public string WrongAnswer1 { get; set; }
         public string WrongAnswer2 { get; set; }
         public string WrongAnswer3 { get; set; }
+        public bool HasBeenAsked { get; set; }
 
         public TriviaCategory TriviaCategory { get; set; }
         
@@ -39,6 +40,7 @@ namespace TriviaGame.Questions
             WrongAnswer2 = wrongAnswer2;
             WrongAnswer3 = wrongAnswer3;
             TriviaCategory = category;
+            HasBeenAsked = false;
         }
 
     }

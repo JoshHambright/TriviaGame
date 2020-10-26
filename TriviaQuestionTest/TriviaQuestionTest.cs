@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TriviaGame.Questions;
 
 namespace TriviaQuestionTest
 {
@@ -10,10 +11,14 @@ namespace TriviaQuestionTest
         public void SetQuestionID_ShouldReturnCorrectID()
         {
             //Arrange
+            TriviaQuestion question = new TriviaQuestion();
 
-            // Act
+            //Act
+            question.QuestionID = 001;
+
 
             //Assert
+            Assert.AreEqual(question.QuestionID, 001);
 
         }
 

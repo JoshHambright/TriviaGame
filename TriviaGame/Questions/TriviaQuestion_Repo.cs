@@ -39,6 +39,18 @@ namespace TriviaGame.Questions
             return null;
         }
 
+        public int GetQuestionCount()
+        {
+            return _questions.Count();
+        }
+
+        public bool HasItBeenAsked(int id)
+        {
+            TriviaQuestion question = GetQuestionById(id);
+            
+            return question.HasBeenAsked;
+        }
+
         // Update
         public bool UpdateExistingQuestion(int id, TriviaQuestion newQuestion)
         {
@@ -61,6 +73,22 @@ namespace TriviaGame.Questions
                 return false;
             } 
         }     
+
+        public bool UpdatedQuestionAsked(int id)
+        {
+            TriviaQuestion oldQuestion = GetQuestionById(id);
+
+            if (oldQuestion != null)
+            {
+
+                oldQuestion.HasBeenAsked = true;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         // Delete
         public bool DeleteExistingQuestion(TriviaQuestion existingQuestion)
         {
