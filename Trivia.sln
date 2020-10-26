@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriviaQuestionTest", "Trivi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriviaUI", "TriviaUI\TriviaUI.csproj", "{3E48F16C-7E62-4900-A0E9-8117D79AE398}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D4F936B5-046D-488C-8F16-F315F2AD3A06}"
+	ProjectSection(SolutionItems) = preProject
+		MasterList.csv = MasterList.csv
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
