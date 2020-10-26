@@ -48,8 +48,8 @@ namespace TriviaGame.Questions
 
                 oldQuestion.QuestionID = newQuestion.questionID;
                 oldQuestion.Question = newQuestion.question;
-                oldQuestion.CorrectAnswer = correctAnswer;
-                WrongAnswer1 = wrongAnswer1;
+                oldQuestion.CorrectAnswer = newQuestion.correctAnswer;
+                oldQuestion.WrongAnswer1 = newQuestion.wrongAnswer1;
                 WrongAnswer2 = wrongAnswer2;
                 WrongAnswer3 = wrongAnswer3;
                 TriviaCategory = category;
