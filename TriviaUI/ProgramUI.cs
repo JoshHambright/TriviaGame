@@ -55,19 +55,27 @@ namespace TriviaUI
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
+            Console.WriteLine(); 
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("                     ████████╗██████╗ ██╗██╗   ██╗██╗ █████╗ ");
+            Console.WriteLine("                     ╚══██╔══╝██╔══██╗██║██║   ██║██║██╔══██╗");
+            Console.WriteLine("                        ██║   ██████╔╝██║██║   ██║██║███████║");
+            Console.WriteLine("                        ██║   ██╔══██╗██║╚██╗ ██╔╝██║██╔══██║");
+            Console.WriteLine("                        ██║   ██║  ██║██║ ╚████╔╝ ██║██║  ██║");
+            Console.WriteLine("                        ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝  ╚═╝╚═╝  ╚═╝");
+            Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("                                   Lets Play Trivia!");
+            Console.WriteLine("                             Lets Play Trivia!");
             Console.ResetColor();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
@@ -79,31 +87,22 @@ namespace TriviaUI
         public void Menu()
         {
             Console.Clear();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
+            Header();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("1> Classic Game");
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine("   (10 Questions, All Categories)");
+            Console.WriteLine("     1> Classic Game");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("        (10 Questions, All Categories)");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("2> Single Category Game");
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine("   (10 Questions, One Category)");
+            Console.WriteLine("     2> Single Category Game");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("        (10 Questions, One Category)");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("3> Exit");
-            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("     3> Exit");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("   ");
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
+
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("What would you like to do?\n Enter a number.");
@@ -123,7 +122,24 @@ namespace TriviaUI
             }
         }
 
-
+        public void Header()
+        {
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("8888888 8888888888 8 888888888o.    8 8888 `8.`888b           ,8'  8 8888          .8.          ");
+            Console.WriteLine("      8 8888       8 8888    `88.   8 8888  `8.`888b         ,8'   8 8888         .888.         ");
+            Console.WriteLine("      8 8888       8 8888     `88   8 8888   `8.`888b       ,8'    8 8888        :88888.        ");
+            Console.WriteLine("      8 8888       8 8888     ,88   8 8888    `8.`888b     ,8'     8 8888       . `88888.       ");
+            Console.WriteLine("      8 8888       8 8888.   ,88'   8 8888     `8.`888b   ,8'      8 8888      .8. `88888.");
+            Console.WriteLine("      8 8888       8 888888888P'    8 8888      `8.`888b ,8'       8 8888     .8`8. `88888.");
+            Console.WriteLine("      8 8888       8 8888`8b        8 8888       `8.`888b8'        8 8888    .8' `8. `88888.");
+            Console.WriteLine("      8 8888       8 8888 `8b.      8 8888        `8.`888'         8 8888   .8'   `8. `88888.");
+            Console.WriteLine("      8 8888       8 8888   `8b.    8 8888         `8.`8'          8 8888  .888888888. `88888.  ");
+            Console.WriteLine("      8 8888       8 8888     `88.  8 8888          `8.`           8 8888 .8'       `8. `88888. ");
+            Console.WriteLine();
+        }
         public void SinglePlayerBestofTen()
         {
             AskQuestionByID(PickAQuestion());
@@ -137,42 +153,14 @@ namespace TriviaUI
             AskQuestionByID(PickAQuestion());
             AskQuestionByID(PickAQuestion());
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("                                                        ");
-            Console.WriteLine("          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼          ");
-            Console.WriteLine("          ███▀▀▀██┼███▀▀▀███┼███▀█▄█▀███┼██▀▀▀          ");
-            Console.WriteLine("          ██┼┼┼┼██┼██┼┼┼┼┼██┼██┼┼┼█┼┼┼██┼██┼┼┼          ");
-            Console.WriteLine("          ██┼┼┼▄▄▄┼██▄▄▄▄▄██┼██┼┼┼▀┼┼┼██┼██▀▀▀          ");
-            Console.WriteLine("          ██┼┼┼┼██┼██┼┼┼┼┼██┼██┼┼┼┼┼┼┼██┼██┼┼┼          ");
-            Console.WriteLine("          ███▄▄▄██┼██┼┼┼┼┼██┼██┼┼┼┼┼┼┼██┼██▄▄▄          ");
-            Console.WriteLine("          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼          ");
-            Console.WriteLine("          ███▀▀▀███┼▀███┼┼██▀┼██▀▀▀┼██▀▀▀▀██▄┼          ");
-            Console.WriteLine("          ██┼┼┼┼┼██┼┼┼██┼┼██┼┼██┼┼┼┼██┼┼┼┼┼██┼          ");
-            Console.WriteLine("          ██┼┼┼┼┼██┼┼┼██┼┼██┼┼██▀▀▀┼██▄▄▄▄▄▀▀┼          ");
-            Console.WriteLine("          ██┼┼┼┼┼██┼┼┼██┼┼█▀┼┼██┼┼┼┼██┼┼┼┼┼██┼          ");
-            Console.WriteLine("          ███▄▄▄███┼┼┼─▀█▀┼┼─┼██▄▄▄┼██┼┼┼┼┼██▄          ");
-            Console.WriteLine("          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼          ");
-            Console.WriteLine("                                                        ");
-            Console.ResetColor();
-            Console.WriteLine();
-            Console.WriteLine("         You got " + score + " out of 10 questions correct!");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
+            Header();
+            GameOver();
+            Console.WriteLine("                  You got " + score + " out of 10 questions correct!");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
         }
+
 
         public void CategoryBestOfTen() 
         {
@@ -187,33 +175,9 @@ namespace TriviaUI
             AskQuestionByID(PickAQuestion_Category(TriviaCategory.History));
             AskQuestionByID(PickAQuestion_Category(TriviaCategory.History));
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("                                                        ");
-            Console.WriteLine("          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼          ");
-            Console.WriteLine("          ███▀▀▀██┼███▀▀▀███┼███▀█▄█▀███┼██▀▀▀          ");
-            Console.WriteLine("          ██┼┼┼┼██┼██┼┼┼┼┼██┼██┼┼┼█┼┼┼██┼██┼┼┼          ");
-            Console.WriteLine("          ██┼┼┼▄▄▄┼██▄▄▄▄▄██┼██┼┼┼▀┼┼┼██┼██▀▀▀          ");
-            Console.WriteLine("          ██┼┼┼┼██┼██┼┼┼┼┼██┼██┼┼┼┼┼┼┼██┼██┼┼┼          ");
-            Console.WriteLine("          ███▄▄▄██┼██┼┼┼┼┼██┼██┼┼┼┼┼┼┼██┼██▄▄▄          ");
-            Console.WriteLine("          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼          ");
-            Console.WriteLine("          ███▀▀▀███┼▀███┼┼██▀┼██▀▀▀┼██▀▀▀▀██▄┼          ");
-            Console.WriteLine("          ██┼┼┼┼┼██┼┼┼██┼┼██┼┼██┼┼┼┼██┼┼┼┼┼██┼          ");
-            Console.WriteLine("          ██┼┼┼┼┼██┼┼┼██┼┼██┼┼██▀▀▀┼██▄▄▄▄▄▀▀┼          ");
-            Console.WriteLine("          ██┼┼┼┼┼██┼┼┼██┼┼█▀┼┼██┼┼┼┼██┼┼┼┼┼██┼          ");
-            Console.WriteLine("          ███▄▄▄███┼┼┼─▀█▀┼┼─┼██▄▄▄┼██┼┼┼┼┼██▄          ");
-            Console.WriteLine("          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼          ");
-            Console.WriteLine("                                                        ");
-            Console.ResetColor();
-            Console.WriteLine();
-            Console.WriteLine("         You got " + score + " out of 10 questions correct!");
+            Header();
+            GameOver();
+            Console.WriteLine("                  You got " + score + " out of 10 questions correct!");
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
@@ -222,6 +186,28 @@ namespace TriviaUI
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
+        }
+        public void GameOver()
+        {
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.WriteLine("                                                                                        ");
+            Console.WriteLine("                          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼                          ");
+            Console.WriteLine("                          ███▀▀▀██┼███▀▀▀███┼███▀█▄█▀███┼██▀▀▀                          ");
+            Console.WriteLine("                          ██┼┼┼┼██┼██┼┼┼┼┼██┼██┼┼┼█┼┼┼██┼██┼┼┼                          ");
+            Console.WriteLine("                          ██┼┼┼▄▄▄┼██▄▄▄▄▄██┼██┼┼┼▀┼┼┼██┼██▀▀▀                          ");
+            Console.WriteLine("                          ██┼┼┼┼██┼██┼┼┼┼┼██┼██┼┼┼┼┼┼┼██┼██┼┼┼                          ");
+            Console.WriteLine("                          ███▄▄▄██┼██┼┼┼┼┼██┼██┼┼┼┼┼┼┼██┼██▄▄▄                          ");
+            Console.WriteLine("                          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼                          ");
+            Console.WriteLine("                          ███▀▀▀███┼▀███┼┼██▀┼██▀▀▀┼██▀▀▀▀██▄┼                          ");
+            Console.WriteLine("                          ██┼┼┼┼┼██┼┼┼██┼┼██┼┼██┼┼┼┼██┼┼┼┼┼██┼                          ");
+            Console.WriteLine("                          ██┼┼┼┼┼██┼┼┼██┼┼██┼┼██▀▀▀┼██▄▄▄▄▄▀▀┼                          ");
+            Console.WriteLine("                          ██┼┼┼┼┼██┼┼┼██┼┼█▀┼┼██┼┼┼┼██┼┼┼┼┼██┼                          ");
+            Console.WriteLine("                          ███▄▄▄███┼┼┼─▀█▀┼┼─┼██▄▄▄┼██┼┼┼┼┼██▄                          ");
+            Console.WriteLine("                          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼                          ");
+            Console.WriteLine("                                                                                        ");
+            Console.ResetColor();
+            Console.WriteLine();
         }
 
         // Randomly pick a question from the list
@@ -258,10 +244,7 @@ namespace TriviaUI
         public bool AskQuestionByID(int id)
         {
             Console.Clear();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
+            Header();
             TriviaQuestion question = _repo.GetQuestionById(id);
 
             switch (question.TriviaCategory)
@@ -320,8 +303,7 @@ namespace TriviaUI
 
 
             Console.WriteLine(question.Question);
-            Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine("");
 
             // Randomly order the answers presented to user
             Random randy = new Random();
@@ -407,8 +389,6 @@ namespace TriviaUI
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("--------------------------------");
             Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
 
             Console.WriteLine("Enter the number for the correct answer:");
             string key = Console.ReadLine();
@@ -418,8 +398,6 @@ namespace TriviaUI
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("Thats Correct!");
-                Console.WriteLine();
-                Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Press any key for the next question");
                 Console.ReadKey();
@@ -429,11 +407,7 @@ namespace TriviaUI
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine();
-                Console.WriteLine();
                 Console.WriteLine($"YOU'RE WRONG! Its actually: { question.CorrectAnswer}");
-                Console.WriteLine();
-                Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Press any key for the next question");
                 Console.ReadKey();
