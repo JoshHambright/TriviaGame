@@ -207,26 +207,27 @@ namespace TriviaUI
 
         public void TwoPlayerGame()
         {
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 2);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 2);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 2);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 2);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 2);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 2);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 2);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 2);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 2);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 2);
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 2); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 2); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 2); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 2); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 2); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 2); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 2); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 2); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 2); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 2); }
+
             Console.Clear();
             Header();
             GameOver();
