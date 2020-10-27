@@ -180,10 +180,10 @@ namespace TriviaUI
                     break;
                 default:
                     return;
-                   
+
             }
             Console.Clear();
-            AskQuestionByID(PickAQuestion_Category(category),1);
+            AskQuestionByID(PickAQuestion_Category(category), 1);
             AskQuestionByID(PickAQuestion_Category(category), 1);
             AskQuestionByID(PickAQuestion_Category(category), 1);
             AskQuestionByID(PickAQuestion_Category(category), 1);
@@ -272,12 +272,13 @@ namespace TriviaUI
             while (_repo.HasItBeenAsked(questionToAsk) != false)
             {
                 questionToAsk = randy.Next(1, totalQuestions + 1);
-                
-                if (counter >= 102)
+
+                if (counter > 101)
                 {
                     Console.WriteLine("No More available Questions. Try Reloading the game.");
+                    Console.ReadKey();
                     keepPlaying = false;
-                    break;
+                    return -1;
                 }
                 counter++;
             }
@@ -296,9 +297,12 @@ namespace TriviaUI
             while (_repo.HasItBeenAsked(questionToAsk) || _repo.GetQuestionById(questionToAsk).TriviaCategory != category)
             {
                 questionToAsk = randy.Next(1, totalQuestions + 1);
-                if (counter >= 102)
+                if (counter > 101)
                 {
-                    break;
+                    Console.WriteLine("No More available Questions. Try Reloading the game.");
+                    Console.ReadKey();
+                    keepPlaying = false;
+                    return -1;
                 }
                 counter++;
             }
@@ -308,197 +312,204 @@ namespace TriviaUI
 
         public bool AskQuestionByID(int id, int playerNumber)
         {
-            Console.Clear();
-            Header();
-            TriviaQuestion question = _repo.GetQuestionById(id);
-            if (playerNumber == 1)
+            if (id == -1)
             {
-                Console.BackgroundColor = ConsoleColor.Red;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("====== Player #1 =======");
-            }
-            else if (playerNumber == 2)
-            {
-                Console.BackgroundColor = ConsoleColor.Green;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("====== Player #2 =======");
-            }
-            Console.ResetColor();
-            switch (question.TriviaCategory)
-            {
-                case TriviaCategory.General:
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("--------------------------------");
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("        General Trivia");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("--------------------------------");
-                    Console.ResetColor();
-
-                    break;
-                case TriviaCategory.History:
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("--------------------------------");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("        History Trivia");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("--------------------------------");
-                    Console.ResetColor();
-
-
-                    break;
-                case TriviaCategory.PopCulture:
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("------------------------------------");
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("        Pop Culture Trivia");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("------------------------------------");
-                    Console.ResetColor();
-                    break;
-                case TriviaCategory.Geography:
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("-----------------------------------");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("        Geography Trivia");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("-----------------------------------");
-                    Console.ResetColor();
-                    break;
-                case TriviaCategory.Science:
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("--------------------------------");
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("        Science Trivia");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("--------------------------------");
-                    Console.ResetColor();
-                    break;
-
-            }
-
-
-
-            Console.WriteLine(question.Question);
-            Console.WriteLine("");
-
-            // Randomly order the answers presented to user
-            Random randy = new Random();
-            int order = randy.Next(1, 11);
-            string correct = "1";
-            // Order of questions assigned one of 10 ways
-            switch (order)
-            {
-                case 1:
-                    Console.WriteLine("1> " + question.CorrectAnswer);
-                    Console.WriteLine("2> " + question.WrongAnswer1);
-                    Console.WriteLine("3> " + question.WrongAnswer2);
-                    Console.WriteLine("4> " + question.WrongAnswer3);
-                    correct = "1";
-                    break;
-                case 2:
-                    Console.WriteLine("1> " + question.WrongAnswer1);
-                    Console.WriteLine("2> " + question.CorrectAnswer);
-                    Console.WriteLine("3> " + question.WrongAnswer2);
-                    Console.WriteLine("4> " + question.WrongAnswer3);
-                    correct = "2";
-                    break;
-
-                case 3:
-                    Console.WriteLine("1> " + question.WrongAnswer1);
-                    Console.WriteLine("2> " + question.WrongAnswer2);
-                    Console.WriteLine("3> " + question.CorrectAnswer);
-                    Console.WriteLine("4> " + question.WrongAnswer3);
-                    correct = "3";
-                    break;
-
-                case 4:
-                    Console.WriteLine("1> " + question.WrongAnswer1);
-                    Console.WriteLine("2> " + question.WrongAnswer2);
-                    Console.WriteLine("3> " + question.WrongAnswer3);
-                    Console.WriteLine("4> " + question.CorrectAnswer);
-                    correct = "4";
-                    break;
-                case 5:
-                    Console.WriteLine("1> " + question.WrongAnswer2);
-                    Console.WriteLine("2> " + question.CorrectAnswer);
-                    Console.WriteLine("3> " + question.WrongAnswer3);
-                    Console.WriteLine("4> " + question.WrongAnswer1);
-                    correct = "2";
-                    break;
-                case 6:
-                    Console.WriteLine("1> " + question.WrongAnswer3);
-                    Console.WriteLine("2> " + question.CorrectAnswer);
-                    Console.WriteLine("3> " + question.WrongAnswer2);
-                    Console.WriteLine("4> " + question.WrongAnswer1);
-                    correct = "2";
-                    break;
-                case 7:
-                    Console.WriteLine("1> " + question.WrongAnswer3);
-                    Console.WriteLine("2> " + question.CorrectAnswer);
-                    Console.WriteLine("3> " + question.WrongAnswer1);
-                    Console.WriteLine("4> " + question.WrongAnswer2);
-                    correct = "2";
-                    break;
-                case 8:
-                    Console.WriteLine("1> " + question.WrongAnswer3);
-                    Console.WriteLine("2> " + question.WrongAnswer1);
-                    Console.WriteLine("3> " + question.WrongAnswer2);
-                    Console.WriteLine("4> " + question.CorrectAnswer);
-                    correct = "4";
-                    break;
-                case 9:
-                    Console.WriteLine("1> " + question.WrongAnswer2);
-                    Console.WriteLine("2> " + question.WrongAnswer1);
-                    Console.WriteLine("3> " + question.WrongAnswer3);
-                    Console.WriteLine("4> " + question.CorrectAnswer);
-                    correct = "4";
-                    break;
-                case 10:
-                    Console.WriteLine("1> " + question.WrongAnswer3);
-                    Console.WriteLine("2> " + question.WrongAnswer2);
-                    Console.WriteLine("3> " + question.CorrectAnswer);
-                    Console.WriteLine("4> " + question.WrongAnswer1);
-                    correct = "3";
-                    break;
-            }
-            _repo.UpdatedQuestionAsked(id);
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("--------------------------------");
-            Console.WriteLine();
-
-            Console.WriteLine("Enter the number for the correct answer:");
-            string key = Console.ReadLine();
-            if (key == correct)
-            {
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine("Thats Correct!");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Press any key for the next question");
-                Console.ReadKey();
-                if (playerNumber == 1)
-                {
-                    PlayerOneScore++;
-                }
-                else if (playerNumber == 2)
-                {
-                    PlayerTwoScore++;
-                }
-                return true;
+                return false;
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"YOU'RE WRONG! Its actually: { question.CorrectAnswer}");
+                Console.Clear();
+                Header();
+                TriviaQuestion question = _repo.GetQuestionById(id);
+                if (playerNumber == 1)
+                {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("====== Player #1 =======");
+                }
+                else if (playerNumber == 2)
+                {
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("====== Player #2 =======");
+                }
+                Console.ResetColor();
+                switch (question.TriviaCategory)
+                {
+                    case TriviaCategory.General:
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("--------------------------------");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("        General Trivia");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("--------------------------------");
+                        Console.ResetColor();
+
+                        break;
+                    case TriviaCategory.History:
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("--------------------------------");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("        History Trivia");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("--------------------------------");
+                        Console.ResetColor();
+
+
+                        break;
+                    case TriviaCategory.PopCulture:
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("------------------------------------");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("        Pop Culture Trivia");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("------------------------------------");
+                        Console.ResetColor();
+                        break;
+                    case TriviaCategory.Geography:
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("-----------------------------------");
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("        Geography Trivia");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("-----------------------------------");
+                        Console.ResetColor();
+                        break;
+                    case TriviaCategory.Science:
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("--------------------------------");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("        Science Trivia");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("--------------------------------");
+                        Console.ResetColor();
+                        break;
+                }
+
+
+
+
+                Console.WriteLine(question.Question);
+                Console.WriteLine("");
+
+                // Randomly order the answers presented to user
+                Random randy = new Random();
+                int order = randy.Next(1, 11);
+                string correct = "1";
+                // Order of questions assigned one of 10 ways
+                switch (order)
+                {
+                    case 1:
+                        Console.WriteLine("1> " + question.CorrectAnswer);
+                        Console.WriteLine("2> " + question.WrongAnswer1);
+                        Console.WriteLine("3> " + question.WrongAnswer2);
+                        Console.WriteLine("4> " + question.WrongAnswer3);
+                        correct = "1";
+                        break;
+                    case 2:
+                        Console.WriteLine("1> " + question.WrongAnswer1);
+                        Console.WriteLine("2> " + question.CorrectAnswer);
+                        Console.WriteLine("3> " + question.WrongAnswer2);
+                        Console.WriteLine("4> " + question.WrongAnswer3);
+                        correct = "2";
+                        break;
+
+                    case 3:
+                        Console.WriteLine("1> " + question.WrongAnswer1);
+                        Console.WriteLine("2> " + question.WrongAnswer2);
+                        Console.WriteLine("3> " + question.CorrectAnswer);
+                        Console.WriteLine("4> " + question.WrongAnswer3);
+                        correct = "3";
+                        break;
+
+                    case 4:
+                        Console.WriteLine("1> " + question.WrongAnswer1);
+                        Console.WriteLine("2> " + question.WrongAnswer2);
+                        Console.WriteLine("3> " + question.WrongAnswer3);
+                        Console.WriteLine("4> " + question.CorrectAnswer);
+                        correct = "4";
+                        break;
+                    case 5:
+                        Console.WriteLine("1> " + question.WrongAnswer2);
+                        Console.WriteLine("2> " + question.CorrectAnswer);
+                        Console.WriteLine("3> " + question.WrongAnswer3);
+                        Console.WriteLine("4> " + question.WrongAnswer1);
+                        correct = "2";
+                        break;
+                    case 6:
+                        Console.WriteLine("1> " + question.WrongAnswer3);
+                        Console.WriteLine("2> " + question.CorrectAnswer);
+                        Console.WriteLine("3> " + question.WrongAnswer2);
+                        Console.WriteLine("4> " + question.WrongAnswer1);
+                        correct = "2";
+                        break;
+                    case 7:
+                        Console.WriteLine("1> " + question.WrongAnswer3);
+                        Console.WriteLine("2> " + question.CorrectAnswer);
+                        Console.WriteLine("3> " + question.WrongAnswer1);
+                        Console.WriteLine("4> " + question.WrongAnswer2);
+                        correct = "2";
+                        break;
+                    case 8:
+                        Console.WriteLine("1> " + question.WrongAnswer3);
+                        Console.WriteLine("2> " + question.WrongAnswer1);
+                        Console.WriteLine("3> " + question.WrongAnswer2);
+                        Console.WriteLine("4> " + question.CorrectAnswer);
+                        correct = "4";
+                        break;
+                    case 9:
+                        Console.WriteLine("1> " + question.WrongAnswer2);
+                        Console.WriteLine("2> " + question.WrongAnswer1);
+                        Console.WriteLine("3> " + question.WrongAnswer3);
+                        Console.WriteLine("4> " + question.CorrectAnswer);
+                        correct = "4";
+                        break;
+                    case 10:
+                        Console.WriteLine("1> " + question.WrongAnswer3);
+                        Console.WriteLine("2> " + question.WrongAnswer2);
+                        Console.WriteLine("3> " + question.CorrectAnswer);
+                        Console.WriteLine("4> " + question.WrongAnswer1);
+                        correct = "3";
+                        break;
+                }
+                _repo.UpdatedQuestionAsked(id);
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Press any key for the next question");
-                Console.ReadKey();
-                return false;
+                Console.WriteLine("--------------------------------");
+                Console.WriteLine();
+
+                Console.WriteLine("Enter the number for the correct answer:");
+                string key = Console.ReadLine();
+                if (key == correct)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine("Thats Correct!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Press any key for the next question");
+                    Console.ReadKey();
+                    if (playerNumber == 1)
+                    {
+                        PlayerOneScore++;
+                    }
+                    else if (playerNumber == 2)
+                    {
+                        PlayerTwoScore++;
+                    }
+                    return true;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"YOU'RE WRONG! Its actually: { question.CorrectAnswer}");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Press any key for the next question");
+                    Console.ReadKey();
+                    return false;
+                }
+
+
             }
-
-
         }
 
         public void Header()
