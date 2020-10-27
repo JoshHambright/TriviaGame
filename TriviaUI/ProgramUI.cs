@@ -17,6 +17,7 @@ namespace TriviaUI
         private int PlayerOneScore = 0;
         private int PlayerTwoScore = 0;
         private bool keepPlaying = true;
+        private bool MoreQuestions = true;
 
         public void Run()
         {
@@ -120,16 +121,17 @@ namespace TriviaUI
 
         public void SinglePlayerBestofTen()
         {
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 1);
-            AskQuestionByID(PickAQuestion(), 1);
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion(), 1); }
+            
             Console.Clear();
             Header();
             GameOver();
@@ -183,16 +185,16 @@ namespace TriviaUI
 
             }
             Console.Clear();
-            AskQuestionByID(PickAQuestion_Category(category), 1);
-            AskQuestionByID(PickAQuestion_Category(category), 1);
-            AskQuestionByID(PickAQuestion_Category(category), 1);
-            AskQuestionByID(PickAQuestion_Category(category), 1);
-            AskQuestionByID(PickAQuestion_Category(category), 1);
-            AskQuestionByID(PickAQuestion_Category(category), 1);
-            AskQuestionByID(PickAQuestion_Category(category), 1);
-            AskQuestionByID(PickAQuestion_Category(category), 1);
-            AskQuestionByID(PickAQuestion_Category(category), 1);
-            AskQuestionByID(PickAQuestion_Category(category), 1);
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion_Category(category), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion_Category(category), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion_Category(category), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion_Category(category), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion_Category(category), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion_Category(category), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion_Category(category), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion_Category(category), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion_Category(category), 1); }
+            if (MoreQuestions == true) { AskQuestionByID(PickAQuestion_Category(category), 1); }
             Console.Clear();
             Header();
             GameOver();
@@ -277,6 +279,7 @@ namespace TriviaUI
                 {
                     Console.WriteLine("No More available Questions. Try Reloading the game.");
                     Console.ReadKey();
+                    MoreQuestions = false;
                     keepPlaying = false;
                     return -1;
                 }
