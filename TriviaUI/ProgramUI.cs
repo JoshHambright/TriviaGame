@@ -11,9 +11,11 @@ namespace TriviaUI
     public class ProgramUI
     {
         //Fields
+        
 
         private TriviaQuestion_Repo _repo = new TriviaQuestion_Repo();
         private int score = 0;
+        private bool keepPlaying = true;
 
         public void Run()
         {
@@ -21,30 +23,12 @@ namespace TriviaUI
             ImportQuestions(@"C:/Users/joshh/source/repos/Trivia/MasterList.csv");
             //SeedQuestions();
             SplashScreen();
+            while (keepPlaying)
+            {
             Menu();
+            }
         }
 
-        private void SeedQuestions()
-        {
-            //Seed Questions for testing if not using the .csv files
-            TriviaQuestion question1 = new TriviaQuestion(
-                001, "What vegetable has varieties known as Bell Tower, Orobelle, and Jupiter?", "Pepper", "Squash", "Onion", "Corn", TriviaCategory.General);
-            TriviaQuestion question2 = new TriviaQuestion(
-                002, "What was the name of Michael J Fox's character in the television sitcom Family Ties?", "Alex Keaton", "Marty McFly", "Stuart Little", "Mike Flaherty", TriviaCategory.PopCulture);
-            TriviaQuestion question3 = new TriviaQuestion(
-                003, "How many Federal Holidays are there in the United States?", "10", "7", "13", "18", TriviaCategory.General);
-            TriviaQuestion question4 = new TriviaQuestion(
-                004, "What is the name of the world's longest river?", "Nile", "Amazon", "Mississippi", "Wabash", TriviaCategory.Geography);
-            TriviaQuestion question5 = new TriviaQuestion(
-                005, "Who is considered the father of the World Wide Web?", "Tim Berners-Lee", "Steve Jobs", "Bill Gates", "Jeff Bezos", TriviaCategory.History);
-
-            _repo.AddQuestionToList(question1);
-            _repo.AddQuestionToList(question2);
-            _repo.AddQuestionToList(question3);
-            _repo.AddQuestionToList(question4);
-            _repo.AddQuestionToList(question5);
-
-        }
         public void SplashScreen()
         {
             Console.WriteLine();
@@ -117,29 +101,13 @@ namespace TriviaUI
                     CategoryBestOfTen();
                     break;
                 case "3":
+                    keepPlaying = false;
+                    break;
                 default:
                     break;
             }
         }
 
-        public void Header()
-        {
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("8888888 8888888888 8 888888888o.    8 8888 `8.`888b           ,8'  8 8888          .8.          ");
-            Console.WriteLine("      8 8888       8 8888    `88.   8 8888  `8.`888b         ,8'   8 8888         .888.         ");
-            Console.WriteLine("      8 8888       8 8888     `88   8 8888   `8.`888b       ,8'    8 8888        :88888.        ");
-            Console.WriteLine("      8 8888       8 8888     ,88   8 8888    `8.`888b     ,8'     8 8888       . `88888.       ");
-            Console.WriteLine("      8 8888       8 8888.   ,88'   8 8888     `8.`888b   ,8'      8 8888      .8. `88888.");
-            Console.WriteLine("      8 8888       8 888888888P'    8 8888      `8.`888b ,8'       8 8888     .8`8. `88888.");
-            Console.WriteLine("      8 8888       8 8888`8b        8 8888       `8.`888b8'        8 8888    .8' `8. `88888.");
-            Console.WriteLine("      8 8888       8 8888 `8b.      8 8888        `8.`888'         8 8888   .8'   `8. `88888.");
-            Console.WriteLine("      8 8888       8 8888   `8b.    8 8888         `8.`8'          8 8888  .888888888. `88888.  ");
-            Console.WriteLine("      8 8888       8 8888     `88.  8 8888          `8.`           8 8888 .8'       `8. `88888. ");
-            Console.WriteLine();
-        }
         public void SinglePlayerBestofTen()
         {
             AskQuestionByID(PickAQuestion());
@@ -164,63 +132,38 @@ namespace TriviaUI
 
         public void CategoryBestOfTen() 
         {
+
             AskQuestionByID(PickAQuestion_Category(TriviaCategory.History));
-            AskQuestionByID(PickAQuestion_Category(TriviaCategory.History));
-            AskQuestionByID(PickAQuestion_Category(TriviaCategory.History));
-            AskQuestionByID(PickAQuestion_Category(TriviaCategory.History));
-            AskQuestionByID(PickAQuestion_Category(TriviaCategory.History));
-            AskQuestionByID(PickAQuestion_Category(TriviaCategory.History));
-            AskQuestionByID(PickAQuestion_Category(TriviaCategory.History));
-            AskQuestionByID(PickAQuestion_Category(TriviaCategory.History));
-            AskQuestionByID(PickAQuestion_Category(TriviaCategory.History));
-            AskQuestionByID(PickAQuestion_Category(TriviaCategory.History));
-            Console.Clear();
+            Console.Clear();+
             Header();
             GameOver();
-            Console.WriteLine("                  You got " + score + " out of 10 questions correct!");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine("                         You got " + score + " out of 10 questions correct!");
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
         }
-        public void GameOver()
-        {
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.WriteLine("                                                                                        ");
-            Console.WriteLine("                          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼                          ");
-            Console.WriteLine("                          ███▀▀▀██┼███▀▀▀███┼███▀█▄█▀███┼██▀▀▀                          ");
-            Console.WriteLine("                          ██┼┼┼┼██┼██┼┼┼┼┼██┼██┼┼┼█┼┼┼██┼██┼┼┼                          ");
-            Console.WriteLine("                          ██┼┼┼▄▄▄┼██▄▄▄▄▄██┼██┼┼┼▀┼┼┼██┼██▀▀▀                          ");
-            Console.WriteLine("                          ██┼┼┼┼██┼██┼┼┼┼┼██┼██┼┼┼┼┼┼┼██┼██┼┼┼                          ");
-            Console.WriteLine("                          ███▄▄▄██┼██┼┼┼┼┼██┼██┼┼┼┼┼┼┼██┼██▄▄▄                          ");
-            Console.WriteLine("                          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼                          ");
-            Console.WriteLine("                          ███▀▀▀███┼▀███┼┼██▀┼██▀▀▀┼██▀▀▀▀██▄┼                          ");
-            Console.WriteLine("                          ██┼┼┼┼┼██┼┼┼██┼┼██┼┼██┼┼┼┼██┼┼┼┼┼██┼                          ");
-            Console.WriteLine("                          ██┼┼┼┼┼██┼┼┼██┼┼██┼┼██▀▀▀┼██▄▄▄▄▄▀▀┼                          ");
-            Console.WriteLine("                          ██┼┼┼┼┼██┼┼┼██┼┼█▀┼┼██┼┼┼┼██┼┼┼┼┼██┼                          ");
-            Console.WriteLine("                          ███▄▄▄███┼┼┼─▀█▀┼┼─┼██▄▄▄┼██┼┼┼┼┼██▄                          ");
-            Console.WriteLine("                          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼                          ");
-            Console.WriteLine("                                                                                        ");
-            Console.ResetColor();
-            Console.WriteLine();
-        }
 
-        // Randomly pick a question from the list
+        
         public int PickAQuestion()
         {
-            //get a list of questions
+            // Randomly select a question that hasn't been asked previously
             int totalQuestions = _repo.GetQuestionCount();
             Random randy = new Random();
             int questionToAsk = randy.Next(1, totalQuestions + 1);
 
+            
             while (_repo.HasItBeenAsked(questionToAsk) != false)
             {
                 questionToAsk = randy.Next(1, totalQuestions + 1);
+                int counter=0;
+                if (counter >= 102)
+                {
+                    Console.WriteLine("No More available Questions. Try Reloading the game.");
+                    keepPlaying = false;
+                    break;
+                }
+                counter++;
             }
 
             return questionToAsk;
@@ -233,9 +176,15 @@ namespace TriviaUI
             Random randy = new Random();
             int questionToAsk = randy.Next(1, totalQuestions + 1);
 
-            while (_repo.HasItBeenAsked(questionToAsk) != false && _repo.GetQuestionById(questionToAsk).TriviaCategory != category)
+            while (_repo.HasItBeenAsked(questionToAsk) || _repo.GetQuestionById(questionToAsk).TriviaCategory != category)
             {
+                int counter = 0;
                 questionToAsk = randy.Next(1, totalQuestions + 1);
+                if (counter >= 102)
+                {
+                    break;
+                }
+                counter++;
             }
 
             return questionToAsk;
@@ -416,24 +365,47 @@ namespace TriviaUI
 
 
         }
-        public void PrintTheWholeRepo()
+
+        public void Header()
         {
-            List<TriviaQuestion> listOfQuestions = _repo.GetQuestions();
-            foreach (TriviaQuestion question in listOfQuestions)
-            {
-                Console.WriteLine("QuestionID: " + question.QuestionID);
-                Console.WriteLine("Question: " + question.Question);
-                Console.WriteLine("Right Answer: " + question.CorrectAnswer);
-                Console.WriteLine("Wrong 1: " + question.WrongAnswer1);
-                Console.WriteLine("Wrong 2: " + question.WrongAnswer2);
-                Console.WriteLine("Wrong 3: " + question.WrongAnswer3);
-                Console.WriteLine("Category: " + question.TriviaCategory);
-
-            }
-            Console.WriteLine("Press any key to exit");
-            Console.ReadKey();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("8888888 8888888888 8 888888888o.    8 8888 `8.`888b           ,8'  8 8888          .8.          ");
+            Console.WriteLine("      8 8888       8 8888    `88.   8 8888  `8.`888b         ,8'   8 8888         .888.         ");
+            Console.WriteLine("      8 8888       8 8888     `88   8 8888   `8.`888b       ,8'    8 8888        :88888.        ");
+            Console.WriteLine("      8 8888       8 8888     ,88   8 8888    `8.`888b     ,8'     8 8888       . `88888.       ");
+            Console.WriteLine("      8 8888       8 8888.   ,88'   8 8888     `8.`888b   ,8'      8 8888      .8. `88888.");
+            Console.WriteLine("      8 8888       8 888888888P'    8 8888      `8.`888b ,8'       8 8888     .8`8. `88888.");
+            Console.WriteLine("      8 8888       8 8888`8b        8 8888       `8.`888b8'        8 8888    .8' `8. `88888.");
+            Console.WriteLine("      8 8888       8 8888 `8b.      8 8888        `8.`888'         8 8888   .8'   `8. `88888.");
+            Console.WriteLine("      8 8888       8 8888   `8b.    8 8888         `8.`8'          8 8888  .888888888. `88888.  ");
+            Console.WriteLine("      8 8888       8 8888     `88.  8 8888          `8.`           8 8888 .8'       `8. `88888. ");
+            Console.WriteLine();
         }
-
+        public void GameOver()
+        {
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.WriteLine("                                                                                        ");
+            Console.WriteLine("                          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼                          ");
+            Console.WriteLine("                          ███▀▀▀██┼███▀▀▀███┼███▀█▄█▀███┼██▀▀▀                          ");
+            Console.WriteLine("                          ██┼┼┼┼██┼██┼┼┼┼┼██┼██┼┼┼█┼┼┼██┼██┼┼┼                          ");
+            Console.WriteLine("                          ██┼┼┼▄▄▄┼██▄▄▄▄▄██┼██┼┼┼▀┼┼┼██┼██▀▀▀                          ");
+            Console.WriteLine("                          ██┼┼┼┼██┼██┼┼┼┼┼██┼██┼┼┼┼┼┼┼██┼██┼┼┼                          ");
+            Console.WriteLine("                          ███▄▄▄██┼██┼┼┼┼┼██┼██┼┼┼┼┼┼┼██┼██▄▄▄                          ");
+            Console.WriteLine("                          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼                          ");
+            Console.WriteLine("                          ███▀▀▀███┼▀███┼┼██▀┼██▀▀▀┼██▀▀▀▀██▄┼                          ");
+            Console.WriteLine("                          ██┼┼┼┼┼██┼┼┼██┼┼██┼┼██┼┼┼┼██┼┼┼┼┼██┼                          ");
+            Console.WriteLine("                          ██┼┼┼┼┼██┼┼┼██┼┼██┼┼██▀▀▀┼██▄▄▄▄▄▀▀┼                          ");
+            Console.WriteLine("                          ██┼┼┼┼┼██┼┼┼██┼┼█▀┼┼██┼┼┼┼██┼┼┼┼┼██┼                          ");
+            Console.WriteLine("                          ███▄▄▄███┼┼┼─▀█▀┼┼─┼██▄▄▄┼██┼┼┼┼┼██▄                          ");
+            Console.WriteLine("                          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼                          ");
+            Console.WriteLine("                                                                                        ");
+            Console.ResetColor();
+            Console.WriteLine();
+        }
         public void ImportQuestions(string path)
         {
             string[] lines = System.IO.File.ReadAllLines(path);
@@ -475,6 +447,44 @@ namespace TriviaUI
 
             }
 
+        }
+        private void SeedQuestions()
+        {
+            //Seed Questions for testing if not using the .csv files
+            TriviaQuestion question1 = new TriviaQuestion(
+                001, "What vegetable has varieties known as Bell Tower, Orobelle, and Jupiter?", "Pepper", "Squash", "Onion", "Corn", TriviaCategory.General);
+            TriviaQuestion question2 = new TriviaQuestion(
+                002, "What was the name of Michael J Fox's character in the television sitcom Family Ties?", "Alex Keaton", "Marty McFly", "Stuart Little", "Mike Flaherty", TriviaCategory.PopCulture);
+            TriviaQuestion question3 = new TriviaQuestion(
+                003, "How many Federal Holidays are there in the United States?", "10", "7", "13", "18", TriviaCategory.General);
+            TriviaQuestion question4 = new TriviaQuestion(
+                004, "What is the name of the world's longest river?", "Nile", "Amazon", "Mississippi", "Wabash", TriviaCategory.Geography);
+            TriviaQuestion question5 = new TriviaQuestion(
+                005, "Who is considered the father of the World Wide Web?", "Tim Berners-Lee", "Steve Jobs", "Bill Gates", "Jeff Bezos", TriviaCategory.History);
+
+            _repo.AddQuestionToList(question1);
+            _repo.AddQuestionToList(question2);
+            _repo.AddQuestionToList(question3);
+            _repo.AddQuestionToList(question4);
+            _repo.AddQuestionToList(question5);
+
+        }
+        public void PrintTheWholeRepo()
+        {
+            List<TriviaQuestion> listOfQuestions = _repo.GetQuestions();
+            foreach (TriviaQuestion question in listOfQuestions)
+            {
+                Console.WriteLine("QuestionID: " + question.QuestionID);
+                Console.WriteLine("Question: " + question.Question);
+                Console.WriteLine("Right Answer: " + question.CorrectAnswer);
+                Console.WriteLine("Wrong 1: " + question.WrongAnswer1);
+                Console.WriteLine("Wrong 2: " + question.WrongAnswer2);
+                Console.WriteLine("Wrong 3: " + question.WrongAnswer3);
+                Console.WriteLine("Category: " + question.TriviaCategory);
+
+            }
+            Console.WriteLine("Press any key to exit");
+            Console.ReadKey()
         }
     }
 }
