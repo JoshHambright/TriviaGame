@@ -11,7 +11,7 @@ namespace TriviaUI
     public class ProgramUI
     {
         //Fields
-        
+
 
         private TriviaQuestion_Repo _repo = new TriviaQuestion_Repo();
         private int score = 0;
@@ -25,7 +25,7 @@ namespace TriviaUI
             SplashScreen();
             while (keepPlaying)
             {
-            Menu();
+                Menu();
             }
         }
 
@@ -39,7 +39,7 @@ namespace TriviaUI
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine(); 
+            Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
@@ -130,11 +130,43 @@ namespace TriviaUI
         }
 
 
-        public void CategoryBestOfTen() 
+        public void CategoryBestOfTen()
         {
-
-            AskQuestionByID(PickAQuestion_Category(TriviaCategory.History));
-            Console.Clear();+
+            TriviaCategory category;
+            Console.WriteLine("Which category do you choose?\n Enter a number.");
+            string selectCategory = Console.ReadLine();
+            switch (selectCategory)
+            {
+                case "1":
+                    category = TriviaCategory.General;
+                    break;
+                case "2":
+                    category = TriviaCategory.Geography;
+                    break;
+                case "3":
+                    category = TriviaCategory.History;
+                    break;
+                case "4":
+                    category = TriviaCategory.Science;
+                    break;
+                case "5":
+                    category = TriviaCategory.PopCulture;
+                    break;
+                default:
+                    return;
+                   
+            }
+            AskQuestionByID(PickAQuestion_Category(category));
+            AskQuestionByID(PickAQuestion_Category(category));
+            AskQuestionByID(PickAQuestion_Category(category));
+            AskQuestionByID(PickAQuestion_Category(category));
+            AskQuestionByID(PickAQuestion_Category(category));
+            AskQuestionByID(PickAQuestion_Category(category));
+            AskQuestionByID(PickAQuestion_Category(category));
+            AskQuestionByID(PickAQuestion_Category(category));
+            AskQuestionByID(PickAQuestion_Category(category));
+            AskQuestionByID(PickAQuestion_Category(category));
+            Console.Clear();
             Header();
             GameOver();
             Console.WriteLine("                         You got " + score + " out of 10 questions correct!");
@@ -144,19 +176,20 @@ namespace TriviaUI
             Console.ReadKey();
         }
 
-        
+
         public int PickAQuestion()
         {
             // Randomly select a question that hasn't been asked previously
             int totalQuestions = _repo.GetQuestionCount();
             Random randy = new Random();
             int questionToAsk = randy.Next(1, totalQuestions + 1);
+            int counter = 0;
 
-            
+
             while (_repo.HasItBeenAsked(questionToAsk) != false)
             {
                 questionToAsk = randy.Next(1, totalQuestions + 1);
-                int counter=0;
+                
                 if (counter >= 102)
                 {
                     Console.WriteLine("No More available Questions. Try Reloading the game.");
@@ -175,10 +208,10 @@ namespace TriviaUI
             int totalQuestions = _repo.GetQuestionCount();
             Random randy = new Random();
             int questionToAsk = randy.Next(1, totalQuestions + 1);
+            int counter = 0;
 
             while (_repo.HasItBeenAsked(questionToAsk) || _repo.GetQuestionById(questionToAsk).TriviaCategory != category)
             {
-                int counter = 0;
                 questionToAsk = randy.Next(1, totalQuestions + 1);
                 if (counter >= 102)
                 {
@@ -484,7 +517,7 @@ namespace TriviaUI
 
             }
             Console.WriteLine("Press any key to exit");
-            Console.ReadKey()
+            Console.ReadKey();
         }
     }
 }
