@@ -14,7 +14,8 @@ namespace TriviaUI
 
 
         private TriviaQuestion_Repo _repo = new TriviaQuestion_Repo();
-        private int score = 0;
+        private int PlayerOneScore = 0;
+        private int PlayerTwoScore = 0;
         private bool keepPlaying = true;
 
         public void Run()
@@ -70,6 +71,8 @@ namespace TriviaUI
 
         public void Menu()
         {
+            PlayerOneScore = 0;
+            PlayerTwoScore = 0;
             Console.Clear();
             Header();
             Console.ForegroundColor = ConsoleColor.White;
@@ -81,7 +84,11 @@ namespace TriviaUI
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("        (10 Questions, One Category)");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("     3> Exit");
+            Console.WriteLine("     3> Two Player Game");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("        (10 Questions Each, All Categories)");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("     4> Exit");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("   ");
             Console.WriteLine();
@@ -101,6 +108,9 @@ namespace TriviaUI
                     CategoryBestOfTen();
                     break;
                 case "3":
+                    TwoPlayerGame();
+                    break;
+                case "4":
                     keepPlaying = false;
                     break;
                 default:
@@ -110,20 +120,20 @@ namespace TriviaUI
 
         public void SinglePlayerBestofTen()
         {
-            AskQuestionByID(PickAQuestion());
-            AskQuestionByID(PickAQuestion());
-            AskQuestionByID(PickAQuestion());
-            AskQuestionByID(PickAQuestion());
-            AskQuestionByID(PickAQuestion());
-            AskQuestionByID(PickAQuestion());
-            AskQuestionByID(PickAQuestion());
-            AskQuestionByID(PickAQuestion());
-            AskQuestionByID(PickAQuestion());
-            AskQuestionByID(PickAQuestion());
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 1);
             Console.Clear();
             Header();
             GameOver();
-            Console.WriteLine("                  You got " + score + " out of 10 questions correct!");
+            Console.WriteLine("                  You got " + PlayerOneScore + " out of 10 questions correct!");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
@@ -132,9 +142,25 @@ namespace TriviaUI
 
         public void CategoryBestOfTen()
         {
-            TriviaCategory category;
+            Console.Clear();
+            Header();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("----Choose A Category----");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("1> General");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("2> Geography");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("3> History");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("4> Science");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("5> Pop Culture");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("------------------------");
             Console.WriteLine("Which category do you choose?\n Enter a number.");
             string selectCategory = Console.ReadLine();
+            TriviaCategory category;
             switch (selectCategory)
             {
                 case "1":
@@ -156,24 +182,81 @@ namespace TriviaUI
                     return;
                    
             }
-            AskQuestionByID(PickAQuestion_Category(category));
-            AskQuestionByID(PickAQuestion_Category(category));
-            AskQuestionByID(PickAQuestion_Category(category));
-            AskQuestionByID(PickAQuestion_Category(category));
-            AskQuestionByID(PickAQuestion_Category(category));
-            AskQuestionByID(PickAQuestion_Category(category));
-            AskQuestionByID(PickAQuestion_Category(category));
-            AskQuestionByID(PickAQuestion_Category(category));
-            AskQuestionByID(PickAQuestion_Category(category));
-            AskQuestionByID(PickAQuestion_Category(category));
+            Console.Clear();
+            AskQuestionByID(PickAQuestion_Category(category),1);
+            AskQuestionByID(PickAQuestion_Category(category), 1);
+            AskQuestionByID(PickAQuestion_Category(category), 1);
+            AskQuestionByID(PickAQuestion_Category(category), 1);
+            AskQuestionByID(PickAQuestion_Category(category), 1);
+            AskQuestionByID(PickAQuestion_Category(category), 1);
+            AskQuestionByID(PickAQuestion_Category(category), 1);
+            AskQuestionByID(PickAQuestion_Category(category), 1);
+            AskQuestionByID(PickAQuestion_Category(category), 1);
+            AskQuestionByID(PickAQuestion_Category(category), 1);
             Console.Clear();
             Header();
             GameOver();
-            Console.WriteLine("                         You got " + score + " out of 10 questions correct!");
+            Console.WriteLine("                         You got " + PlayerOneScore + " out of 10 questions correct!");
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
+        }
+
+        public void TwoPlayerGame()
+        {
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 2);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 2);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 2);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 2);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 2);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 2);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 2);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 2);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 2);
+            AskQuestionByID(PickAQuestion(), 1);
+            AskQuestionByID(PickAQuestion(), 2);
+            Console.Clear();
+            Header();
+            GameOver();
+            if (PlayerOneScore > PlayerTwoScore)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.WriteLine("                    Player One Wins! Player One had " + PlayerOneScore + " out of 10 questions correct!");
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("                    Player Two's Score was " + PlayerTwoScore + " out of 10 questions correct.");
+            }
+            else if (PlayerOneScore == PlayerTwoScore)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.WriteLine("                    Player One and Player Two TIED!");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.WriteLine("                    Player Two Wins! Player Two had " + PlayerTwoScore + " out of 10 questions correct!");
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("                    Player One's Score was " + PlayerOneScore + " out of 10 questions correct.");
+            }
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
+
         }
 
 
@@ -223,12 +306,24 @@ namespace TriviaUI
             return questionToAsk;
         }
 
-        public bool AskQuestionByID(int id)
+        public bool AskQuestionByID(int id, int playerNumber)
         {
             Console.Clear();
             Header();
             TriviaQuestion question = _repo.GetQuestionById(id);
-
+            if (playerNumber == 1)
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("====== Player #1 =======");
+            }
+            else if (playerNumber == 2)
+            {
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("====== Player #2 =======");
+            }
+            Console.ResetColor();
             switch (question.TriviaCategory)
             {
                 case TriviaCategory.General:
@@ -383,7 +478,14 @@ namespace TriviaUI
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Press any key for the next question");
                 Console.ReadKey();
-                score++;
+                if (playerNumber == 1)
+                {
+                    PlayerOneScore++;
+                }
+                else if (playerNumber == 2)
+                {
+                    PlayerTwoScore++;
+                }
                 return true;
             }
             else
@@ -437,7 +539,6 @@ namespace TriviaUI
             Console.WriteLine("                          ┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼                          ");
             Console.WriteLine("                                                                                        ");
             Console.ResetColor();
-            Console.WriteLine();
         }
         public void ImportQuestions(string path)
         {
