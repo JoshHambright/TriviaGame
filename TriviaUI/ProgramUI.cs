@@ -21,7 +21,9 @@ namespace TriviaUI
 
         public void Run()
         {
+            // !!!!!!IMPORTANT!!!!!!!
             // Set file path to wherever you have the MasterList.csv saved on your computer
+            // Program will not compile unless you update the path to a local path.
             ImportQuestions(@"C:/Users/joshh/source/repos/Trivia/MasterList.csv");
             //SeedQuestions();
             SplashScreen();
@@ -76,6 +78,7 @@ namespace TriviaUI
             PlayerTwoScore = 0;
             Console.Clear();
             Header();
+            
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("     1> Classic Game");
             Console.ForegroundColor = ConsoleColor.DarkGray;
